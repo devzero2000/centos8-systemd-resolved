@@ -13,7 +13,7 @@
 Name:           systemd
 Url:            http://www.freedesktop.org/wiki/Software/systemd
 Version:        239
-Release:        69%{?dist}
+Release:        70%{?dist}
 # For a breakdown of the licensing, see README
 License:        LGPLv2+ and MIT and GPLv2+
 Summary:        System and Service Manager
@@ -888,6 +888,7 @@ Patch0835: 0835-Fix-build-with-httpd-0.9.71.patch
 Patch0836: 0836-ci-replace-LGTM-with-CodeQL.patch
 Patch0837: 0837-ci-mergify-Update-policy-Drop-LGTM-checks.patch
 Patch0838: 0838-time-util-fix-buffer-over-run.patch
+Patch0839: 0839-resolved-instead-of-closing-DNS-UDP-transaction-fds-.patch
 
 %ifarch %{ix86} x86_64 aarch64
 %global have_gnu_efi 1
@@ -1517,6 +1518,8 @@ fi
 %files tests -f .file-list-tests
 
 %changelog
+* Mon Jan  2 2023 Elia Pinto <pinto.elia@gmail.com> - 239-70
+- backport 80710ade03d971a8877fde8ce9d42eb2b07f4c47 (#2156751) 
 * Tue Nov 08 2022 systemd maintenance team <systemd-maint@redhat.com> - 239-69
 - logind: optionally watch utmp for login data (#2122288)
 - logind: add hashtable for finding session by leader PID (#2122288)
